@@ -24,10 +24,5 @@ namespace LClient
         {
             InitializeComponent();
         }
-
-        private void btnLogin_Click(object sender, EventArgs args)
-        {
-            MessageBox.Show("test");
-        }
     }
 }
