@@ -104,6 +104,7 @@
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\leagues\client\dto\SummonerLeagueRewardsDTO.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\leagues\client\dto\SummonerLeaguesDTO.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\login\AuthenticationCredentials.cs" />
+    <Compile Include="Supporting\Models\AS\com\riotgames\platform\login\AuthToken.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\login\Session.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\matchmaking\GameQueueConfig.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\matchmaking\MatchingThrottleConfig.cs" />

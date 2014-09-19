@@ -15,7 +15,7 @@ public String username { get; set; }
 public String macAddress { get; set; }
 public String clientVersion { get; set; }
 public String password { get; set; }
-public object oldPassword { get; set; }
+public String oldPassword { get; set; }
 public String operatingSystem { get; set; }
 }
 }

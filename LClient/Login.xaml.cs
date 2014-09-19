@@ -54,10 +54,39 @@ namespace LClient
                         {
                             case "LOGIN":
                                 progressController.SetMessage("Contacting RTMP Server");
+                                com.riotgames.platform.login.AuthenticationCredentials rtmpInfo = new com.riotgames.platform.login.AuthenticationCredentials()
+                                {
+                                    operatingSystem = "Windows 8",
+                                    username = txtUser.Text,
+                                    domain = "lolclient.lol.riotgames.com",
+                                    clientVersion = "4.16.14_09_11_18_16",
+                                    locale = "en_US",
+                                    password = txtPass.Password,
+                                    macAddress = ""
+                                };
+                                rtmpInfo.authToken = await Task.Factory.StartNew(() => Newtonsoft.Json.JsonConvert.SerializeObject(new com.riotgames.platform.login.AuthToken
+                                    {
+                                        account_id=res.lqt.account_id,
+                                        account_name=res.lqt.account_name,
+                                        fingerprint=res.lqt.fingerprint,
+                                        other=res.lqt.other,
+                                        resources = res.lqt.resources,
+                                        signature = res.lqt.signature,
+                                        timestamp = res.lqt.timestamp,
+                                        uuid = res.lqt.uuid
+                                    }));
+                                Supporting.LRtmp rtmpClient = new Supporting.LRtmp();
+                                if (await rtmpClient.ConnectAsync())
+                                {
+                                    if (await rtmpClient.LoginAsync(rtmpInfo))
+                                    {
+                                        com.riotgames.platform.clientfacade.domain.LoginDataPacket data = await rtmpClient.GetLoginDataPacketAsync();
 
+                                    }
+                                }
                                 break;
                             case "QUEUE":
-                                //TODO finish this
+                                progressController.SetMessage("Got put in queue, too bad i didn't program that yet!");
                                 break;
                             default:
                                 await ProgressFailed(progressController);
