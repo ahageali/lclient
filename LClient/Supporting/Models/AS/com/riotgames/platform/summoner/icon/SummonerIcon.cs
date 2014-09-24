@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner.icon
 {
 [Serializable]
-class SummonerIcon
+public class SummonerIcon
 {
 public com.riotgames.platform.catalog.icon.Icon icon { get; set; }
 public Int32 dataVersion { get; set; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner.spellbook
 {
 [Serializable]
-class SpellBookDTO
+public class SpellBookDTO
 {
 public object bookPagesJson { get; set; }
 public Int32 dataVersion { get; set; }

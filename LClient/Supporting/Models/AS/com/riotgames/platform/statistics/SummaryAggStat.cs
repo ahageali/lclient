@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics
 {
 [Serializable]
-class SummaryAggStat
+public class SummaryAggStat
 {
 public String statType { get; set; }
 public Double count { get; set; }

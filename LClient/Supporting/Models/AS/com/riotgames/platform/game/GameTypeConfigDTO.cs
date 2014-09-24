@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.game
 {
 [Serializable]
-class GameTypeConfigDTO
+public class GameTypeConfigDTO
 {
 public Boolean allowTrades { get; set; }
 public Int32 banTimerDuration { get; set; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics
 {
 [Serializable]
-class PlayerStatSummaries
+public class PlayerStatSummaries
 {
 public Int32 season { get; set; }
 public Int32 dataVersion { get; set; }

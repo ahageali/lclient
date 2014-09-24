@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics
 {
 [Serializable]
-class RecentGames
+public class RecentGames
 {
 public object recentGamesJson { get; set; }
 public Dictionary<string, object> playerGameStatsMap { get; set; }

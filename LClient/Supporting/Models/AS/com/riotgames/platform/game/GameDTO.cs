@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.game
 {
 [Serializable]
-class GameDTO
+public class GameDTO
 {
 public String spectatorsAllowed { get; set; }
 public Boolean passwordSet { get; set; }

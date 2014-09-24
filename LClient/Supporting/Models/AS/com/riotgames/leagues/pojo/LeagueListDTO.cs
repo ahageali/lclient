@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.leagues.pojo
 {
 [Serializable]
-class LeagueListDTO
+public class LeagueListDTO
 {
 public String queue { get; set; }
 public String name { get; set; }

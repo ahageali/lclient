@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics.team
 {
 [Serializable]
-class TeamAggregatedStatsDTO
+public class TeamAggregatedStatsDTO
 {
 public String queueType { get; set; }
 public String serializedToJson { get; set; }

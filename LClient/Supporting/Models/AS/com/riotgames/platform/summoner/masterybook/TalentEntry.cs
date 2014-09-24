@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner.masterybook
 {
 [Serializable]
-class TalentEntry
+public class TalentEntry
 {
 public Int32 rank { get; set; }
 public Int32 talentId { get; set; }

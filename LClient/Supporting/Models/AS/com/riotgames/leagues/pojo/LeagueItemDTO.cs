@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.leagues.pojo
 {
 [Serializable]
-class LeagueItemDTO
+public class LeagueItemDTO
 {
 public Int32 previousDayLeaguePosition { get; set; }
 public Double timeLastDecayMessageShown { get; set; }

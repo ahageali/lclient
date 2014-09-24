@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics
 {
 [Serializable]
-class RawStatDTO
+public class RawStatDTO
 {
 public Int32 dataVersion { get; set; }
 public Double value { get; set; }

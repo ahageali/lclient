@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.team
 {
 [Serializable]
-class TeamId
+public class TeamId
 {
 public String fullId { get; set; }
 }

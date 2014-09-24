@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.catalog.champion
 {
 [Serializable]
-class ChampionDTO
+public class ChampionDTO
 {
 public Double purchased { get; set; }
 public object[] championSkins { get; set; }

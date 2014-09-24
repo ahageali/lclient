@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics
 {
 [Serializable]
-class PlayerParticipantStatsSummary
+public class PlayerParticipantStatsSummary
 {
 public String skinName { get; set; }
 public Double gameId { get; set; }

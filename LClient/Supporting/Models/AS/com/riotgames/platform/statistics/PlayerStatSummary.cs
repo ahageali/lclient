@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics
 {
 [Serializable]
-class PlayerStatSummary
+public class PlayerStatSummary
 {
 public Int32 maxRating { get; set; }
 public String playerStatSummaryTypeString { get; set; }

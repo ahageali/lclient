@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner
 {
 [Serializable]
-class SummonerTalentsAndPoints
+public class SummonerTalentsAndPoints
 {
 public Int32 talentPoints { get; set; }
 public Int32 dataVersion { get; set; }

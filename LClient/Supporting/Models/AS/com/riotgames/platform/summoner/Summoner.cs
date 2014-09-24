@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner
 {
 [Serializable]
-class Summoner
+public class Summoner
 {
 public String internalName { get; set; }
 public String previousSeasonHighestTier { get; set; }

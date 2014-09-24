@@ -41,7 +41,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="rtmp-sharp">
+    <Reference Include="rtmp-sharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>Supporting\rtmp-sharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -75,6 +76,7 @@
     <Compile Include="Supporting\Models\AS\com\riotgames\leagues\pojo\LeagueListDTO.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\leagues\pojo\MiniSeriesDTO.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\account\AccountSummary.cs" />
+    <Compile Include="Supporting\Models\AS\com\riotgames\platform\broadcast\BroadcastNotification.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\catalog\champion\ChampionDTO.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\catalog\champion\ChampionSkinDTO.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\catalog\Effect.cs" />
@@ -157,6 +159,7 @@
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\summoner\Talent.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\summoner\TalentGroup.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\platform\summoner\TalentRow.cs" />
+    <Compile Include="Supporting\Models\AS\com\riotgames\platform\systemstate\ClientSystemStatesNotification.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\team\CreatedTeam.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\team\dto\PlayerDTO.cs" />
     <Compile Include="Supporting\Models\AS\com\riotgames\team\dto\RosterDTO.cs" />
@@ -214,7 +217,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

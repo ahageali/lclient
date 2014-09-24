@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner.spellbook
 {
 [Serializable]
-class SlotEntry
+public class SlotEntry
 {
 public Int32 dataVersion { get; set; }
 public Int32 runeId { get; set; }

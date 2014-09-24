@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.team.stats
 {
 [Serializable]
-class MatchHistorySummary
+public class MatchHistorySummary
 {
 public String gameMode { get; set; }
 public Int32 mapId { get; set; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics
 {
 [Serializable]
-class SummaryAggStats
+public class SummaryAggStats
 {
 public object statsJson { get; set; }
 public Int32 dataVersion { get; set; }

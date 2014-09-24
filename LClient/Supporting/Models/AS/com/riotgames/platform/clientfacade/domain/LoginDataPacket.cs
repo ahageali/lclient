@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.clientfacade.domain
 {
 [Serializable]
-class LoginDataPacket
+public class LoginDataPacket
 {
 public Int32 restrictedGamesRemainingForRanked { get; set; }
 public com.riotgames.platform.statistics.PlayerStatSummaries playerStatSummaries { get; set; }
@@ -26,11 +26,11 @@ public Boolean inGhostGame { get; set; }
 public Int32 leaverPenaltyLevel { get; set; }
 public Boolean bingePreventionSystemEnabledForClient { get; set; }
 public Int32 pendingBadges { get; set; }
-public object broadcastNotification { get; set; }
+public com.riotgames.platform.broadcast.BroadcastNotification broadcastNotification { get; set; }
 public Int32 minutesUntilMidnight { get; set; }
 public Double timeUntilFirstWinOfDay { get; set; }
 public Double coOpVsAiMsecsUntilReset { get; set; }
-public object clientSystemStates { get; set; }
+public com.riotgames.platform.systemstate.ClientSystemStatesNotification clientSystemStates { get; set; }
 public Double bingeMinutesRemaining { get; set; }
 public com.riotgames.kudos.dto.PendingKudosDTO pendingKudosDTO { get; set; }
 public Int32 leaverBusterPenaltyTime { get; set; }

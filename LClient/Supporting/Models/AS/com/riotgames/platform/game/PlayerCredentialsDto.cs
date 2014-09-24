@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.game
 {
 [Serializable]
-class PlayerCredentialsDto
+public class PlayerCredentialsDto
 {
 public String encryptionKey { get; set; }
 public Double gameId { get; set; }

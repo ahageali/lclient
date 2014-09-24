@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.catalog.icon
 {
 [Serializable]
-class Icon
+public class Icon
 {
 public object imagePath { get; set; }
 public object toolTip { get; set; }

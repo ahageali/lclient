@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics
 {
 [Serializable]
-class LeaverPenaltyStats
+public class LeaverPenaltyStats
 {
 public object lastLevelIncrease { get; set; }
 public Int32 level { get; set; }

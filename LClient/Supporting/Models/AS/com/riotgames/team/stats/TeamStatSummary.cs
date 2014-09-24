@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.team.stats
 {
 [Serializable]
-class TeamStatSummary
+public class TeamStatSummary
 {
 public Int32 dataVersion { get; set; }
 public object[] teamStatDetails { get; set; }

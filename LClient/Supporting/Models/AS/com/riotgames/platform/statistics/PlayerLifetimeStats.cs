@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics
 {
 [Serializable]
-class PlayerLifetimeStats
+public class PlayerLifetimeStats
 {
 public com.riotgames.platform.statistics.PlayerStatSummaries playerStatSummaries { get; set; }
 public com.riotgames.platform.statistics.LeaverPenaltyStats leaverPenaltyStats { get; set; }

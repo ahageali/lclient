@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner.masterybook
 {
 [Serializable]
-class MasteryBookPageDTO
+public class MasteryBookPageDTO
 {
 public object[] talentEntries { get; set; }
 public Int32 dataVersion { get; set; }

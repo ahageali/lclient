@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner.runes
 {
 [Serializable]
-class SummonerRuneInventory
+public class SummonerRuneInventory
 {
 public Int32 dataVersion { get; set; }
 public object summonerRunesJson { get; set; }

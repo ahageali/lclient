@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics
 {
 [Serializable]
-class PlayerGameStats
+public class PlayerGameStats
 {
 public String skinName { get; set; }
 public Boolean ranked { get; set; }

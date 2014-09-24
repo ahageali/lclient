@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.team
 {
 [Serializable]
-class TeamInfo
+public class TeamInfo
 {
 public Double secondsUntilEligibleForDeletion { get; set; }
 public String memberStatusString { get; set; }

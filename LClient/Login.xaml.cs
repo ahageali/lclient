@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LClient.Supporting.Models.HTTP;
 using MahApps.Metro.Controls.Dialogs;
+using Newtonsoft.Json.Linq;
 
 namespace LClient
 {
@@ -53,43 +54,46 @@ namespace LClient
                         switch (res.status)
                         {
                             case "LOGIN":
-                                progressController.SetMessage("Contacting RTMP Server");
-                                com.riotgames.platform.login.AuthenticationCredentials rtmpInfo = new com.riotgames.platform.login.AuthenticationCredentials()
-                                {
-                                    operatingSystem = "Windows 8",
-                                    username = txtUser.Text,
-                                    domain = "lolclient.lol.riotgames.com",
-                                    clientVersion = "4.16.14_09_11_18_16",
-                                    locale = "en_US",
-                                    password = txtPass.Password,
-                                    macAddress = ""
-                                };
-                                rtmpInfo.authToken = await Task.Factory.StartNew(() => Newtonsoft.Json.JsonConvert.SerializeObject(new com.riotgames.platform.login.AuthToken
-                                    {
-                                        account_id=res.lqt.account_id,
-                                        account_name=res.lqt.account_name,
-                                        fingerprint=res.lqt.fingerprint,
-                                        other=res.lqt.other,
-                                        resources = res.lqt.resources,
-                                        signature = res.lqt.signature,
-                                        timestamp = res.lqt.timestamp,
-                                        uuid = res.lqt.uuid
-                                    }));
-                                Supporting.LRtmp rtmpClient = new Supporting.LRtmp();
-                                if (await rtmpClient.ConnectAsync())
-                                {
-                                    if (await rtmpClient.LoginAsync(rtmpInfo))
-                                    {
-                                        com.riotgames.platform.clientfacade.domain.LoginDataPacket data = await rtmpClient.GetLoginDataPacketAsync();
-
-                                    }
-                                }
+                                await LoginRTMP(progressController, res);
                                 break;
                             case "QUEUE":
-                                progressController.SetMessage("Got put in queue, too bad i didn't program that yet!");
+                                progressController.SetMessage("In queue");
+                                String tickerUrl = "https://lq.na1.lol.riotgames.com/login-queue/rest/queues/lol/ticker/";
+                                tickerUrl += res.champ;
+                                WebClient webClient = new WebClient();
+                                int expectedValue = res.tickers.FirstOrDefault(x=>x.node == res.node).id;
+                                while (true)
+                                {
+                                    String data = webClient.DownloadString(tickerUrl);
+                                    JObject obj = JObject.Parse(data);
+                                    int value = 0;
+                                    int.TryParse((String)obj[res.node.ToString()],System.Globalization.NumberStyles.AllowHexSpecifier,null, out value);
+                                    if (value > expectedValue)
+                                    {
+                                        req = WebRequest.Create("https://lq.na1.lol.riotgames.com/login-queue/rest/queues/lol/token");
+                                        req.ContentType = "application/json";
+                                        req.Method = "POST";
+                                        req.UseDefaultCredentials = true;
+                                        using (StreamWriter writer = new StreamWriter(await req.GetRequestStreamAsync()))
+                                        {
+                                            String serializedLqt = await Task.Factory.StartNew(() => Newtonsoft.Json.JsonConvert.SerializeObject(res.lqt, new Newtonsoft.Json.JsonSerializerSettings() { NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore }));
+                                            await writer.WriteAsync(serializedLqt);
+                                        }
+                                        resp = await req.GetResponseAsync();
+                                        using (StreamReader queueReader = new StreamReader(resp.GetResponseStream()))
+                                        {
+                                            String strResult = await queueReader.ReadToEndAsync();
+                                            HTTPLoginResult result = await Task.Factory.StartNew(() => Newtonsoft.Json.JsonConvert.DeserializeObject<HTTPLoginResult>(strResult));
+                                            res.lqt = result.lqt;
+                                        }
+                                        await LoginRTMP(progressController, res);
+                                        return;
+                                    }
+                                    await Task.Delay(res.delay);
+                                }
                                 break;
                             default:
-                                await ProgressFailed(progressController);
+                                await ProgressFailed(progressController, "Invalid Login");
                                 break;
                         }
                     }
@@ -97,15 +101,54 @@ namespace LClient
                 }
                 catch (Exception excep)
                 {
+                    ProgressFailed(progressController, excep.Message);
                 }
-                //TODO work on this to specify reason
-                await ProgressFailed(progressController);
             }
         }
 
-        private async Task ProgressFailed(ProgressDialogController controller)
+        private async Task LoginRTMP(ProgressDialogController controller, HTTPLoginResult res)
         {
-            controller.SetMessage("Failed");
+            controller.SetMessage("Contacting RTMP Server");
+            Supporting.LRtmp rtmpClient = new Supporting.LRtmp();
+            await rtmpClient.ConnectAsync();
+            com.riotgames.platform.login.AuthenticationCredentials rtmpInfo = new com.riotgames.platform.login.AuthenticationCredentials()
+            {
+                operatingSystem = "Windows 8",
+                username = txtUser.Text,
+                domain = "lolclient.lol.riotgames.com",
+                clientVersion = "4.16.14_09_11_18_16", //todo: don't hardcode this
+                locale = "en_US",
+                password = txtPass.Password,
+                macAddress = ""
+            };
+            rtmpInfo.authToken = await Task.Factory.StartNew(() => Newtonsoft.Json.JsonConvert.SerializeObject(new com.riotgames.platform.login.AuthToken
+            {
+                account_id = res.lqt.account_id,
+                account_name = res.lqt.account_name,
+                fingerprint = res.lqt.fingerprint,
+                other = res.lqt.other,
+                resources = res.lqt.resources,
+                signature = res.lqt.signature,
+                timestamp = res.lqt.timestamp,
+                uuid = res.lqt.uuid
+            }));
+            if (await rtmpClient.LoginAsync(rtmpInfo))
+            {
+                com.riotgames.platform.clientfacade.domain.LoginDataPacket data = await rtmpClient.GetLoginDataPacketAsync();
+                MainWindow mainWindow = new MainWindow(data, rtmpClient);
+                mainWindow.Show();
+                this.Close();
+                return;
+            }
+            else
+            {
+                await ProgressFailed(controller, "Rejected from RTMPS side(?)");
+            }
+        }
+
+        private async Task ProgressFailed(ProgressDialogController controller, String reason)
+        {
+            controller.SetMessage("Failure to login: " + reason);
             await Task.Delay(1500);
             await controller.CloseAsync();
         }

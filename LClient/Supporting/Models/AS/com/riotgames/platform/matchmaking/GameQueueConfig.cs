@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.matchmaking
 {
 [Serializable]
-class GameQueueConfig
+public class GameQueueConfig
 {
 public Int32 blockedMinutesThreshold { get; set; }
 public Int32 minimumParticipantListSize { get; set; }

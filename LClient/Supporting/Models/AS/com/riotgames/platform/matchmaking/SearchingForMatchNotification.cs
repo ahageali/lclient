@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.matchmaking
 {
 [Serializable]
-class SearchingForMatchNotification
+public class SearchingForMatchNotification
 {
 public object playerJoinFailures { get; set; }
 public object[] ghostGameSummoners { get; set; }

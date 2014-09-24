@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.team.dto
 {
 [Serializable]
-class PlayerDTO
+public class PlayerDTO
 {
 public Double playerId { get; set; }
 public object[] teamsSummary { get; set; }

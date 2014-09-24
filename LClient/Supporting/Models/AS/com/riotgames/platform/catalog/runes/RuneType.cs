@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.catalog.runes
 {
 [Serializable]
-class RuneType
+public class RuneType
 {
 public Int32 runeTypeId { get; set; }
 public Int32 dataVersion { get; set; }

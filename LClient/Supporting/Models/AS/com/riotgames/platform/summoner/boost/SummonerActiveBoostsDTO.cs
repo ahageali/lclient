@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner.boost
 {
 [Serializable]
-class SummonerActiveBoostsDTO
+public class SummonerActiveBoostsDTO
 {
 public Double xpBoostEndDate { get; set; }
 public Int32 xpBoostPerWinCount { get; set; }

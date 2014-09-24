@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.gameinvite.contract
 {
 [Serializable]
-class InvitationRequest
+public class InvitationRequest
 {
 public com.riotgames.platform.gameinvite.contract.Inviter inviter { get; set; }
 public String inviteType { get; set; }

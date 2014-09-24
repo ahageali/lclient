@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.catalog.runes
 {
 [Serializable]
-class Rune
+public class Rune
 {
 public object imagePath { get; set; }
 public object toolTip { get; set; }

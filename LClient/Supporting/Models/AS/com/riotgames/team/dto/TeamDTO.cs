@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.team.dto
 {
 [Serializable]
-class TeamDTO
+public class TeamDTO
 {
 public com.riotgames.team.stats.TeamStatSummary teamStatSummary { get; set; }
 public String status { get; set; }

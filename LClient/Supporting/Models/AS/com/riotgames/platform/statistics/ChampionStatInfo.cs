@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics
 {
 [Serializable]
-class ChampionStatInfo
+public class ChampionStatInfo
 {
 public Int32 totalGamesPlayed { get; set; }
 public Double accountId { get; set; }

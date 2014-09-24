@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.matchmaking
 {
 [Serializable]
-class MatchingThrottleConfig
+public class MatchingThrottleConfig
 {
 public Double limit { get; set; }
 public object[] matchingThrottleProperties { get; set; }

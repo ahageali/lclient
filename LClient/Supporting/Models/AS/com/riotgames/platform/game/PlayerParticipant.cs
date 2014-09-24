@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.game
 {
 [Serializable]
-class PlayerParticipant
+public class PlayerParticipant
 {
 public Double accountId { get; set; }
 public Int32 queueRating { get; set; }

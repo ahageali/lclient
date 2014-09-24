@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.catalog.champion
 {
 [Serializable]
-class ChampionSkinDTO
+public class ChampionSkinDTO
 {
 public Boolean lastSelected { get; set; }
 public Boolean stillObtainable { get; set; }

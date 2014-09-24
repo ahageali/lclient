@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner
 {
 [Serializable]
-class AllSummonerData
+public class AllSummonerData
 {
 public com.riotgames.platform.summoner.spellbook.SpellBookDTO spellBook { get; set; }
 public Int32 dataVersion { get; set; }

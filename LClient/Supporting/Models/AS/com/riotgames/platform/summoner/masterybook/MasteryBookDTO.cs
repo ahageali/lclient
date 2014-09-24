@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner.masterybook
 {
 [Serializable]
-class MasteryBookDTO
+public class MasteryBookDTO
 {
 public object bookPagesJson { get; set; }
 public Int32 dataVersion { get; set; }

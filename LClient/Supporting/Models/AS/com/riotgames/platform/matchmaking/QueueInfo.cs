@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.matchmaking
 {
 [Serializable]
-class QueueInfo
+public class QueueInfo
 {
 public Double waitTime { get; set; }
 public Double queueId { get; set; }

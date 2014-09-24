@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.catalog
 {
 [Serializable]
-class Effect
+public class Effect
 {
 public Int32 effectId { get; set; }
 public String gameCode { get; set; }

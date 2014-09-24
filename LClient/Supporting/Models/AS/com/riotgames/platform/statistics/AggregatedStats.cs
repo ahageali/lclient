@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics
 {
 [Serializable]
-class AggregatedStats
+public class AggregatedStats
 {
 public object[] lifetimeStatistics { get; set; }
 public Int32 dataVersion { get; set; }

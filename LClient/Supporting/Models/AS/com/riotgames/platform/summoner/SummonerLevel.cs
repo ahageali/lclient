@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner
 {
 [Serializable]
-class SummonerLevel
+public class SummonerLevel
 {
 public Double expTierMod { get; set; }
 public Double grantRp { get; set; }

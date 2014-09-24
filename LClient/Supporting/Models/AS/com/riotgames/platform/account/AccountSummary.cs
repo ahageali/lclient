@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.account
 {
 [Serializable]
-class AccountSummary
+public class AccountSummary
 {
 public Int32 groupCount { get; set; }
 public String username { get; set; }

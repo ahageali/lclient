@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.game
 {
 [Serializable]
-class PlayerChampionSelectionDTO
+public class PlayerChampionSelectionDTO
 {
 public String summonerInternalName { get; set; }
 public Int32 dataVersion { get; set; }

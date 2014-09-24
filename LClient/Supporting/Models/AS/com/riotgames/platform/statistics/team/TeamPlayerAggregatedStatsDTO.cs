@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.statistics.team
 {
 [Serializable]
-class TeamPlayerAggregatedStatsDTO
+public class TeamPlayerAggregatedStatsDTO
 {
 public Double playerId { get; set; }
 public com.riotgames.platform.statistics.AggregatedStats aggregatedStats { get; set; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.serviceproxy.dispatch
 {
 [Serializable]
-class LcdsServiceProxyResponse
+public class LcdsServiceProxyResponse
 {
 public String status { get; set; }
 public String payload { get; set; }

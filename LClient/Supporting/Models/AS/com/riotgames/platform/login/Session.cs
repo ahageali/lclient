@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.login
 {
 [Serializable]
-class Session
+public class Session
 {
 public String token { get; set; }
 public String password { get; set; }

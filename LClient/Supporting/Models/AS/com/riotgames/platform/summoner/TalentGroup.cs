@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace com.riotgames.platform.summoner
 {
 [Serializable]
-class TalentGroup
+public class TalentGroup
 {
 public Int32 index { get; set; }
 public object[] talentRows { get; set; }
