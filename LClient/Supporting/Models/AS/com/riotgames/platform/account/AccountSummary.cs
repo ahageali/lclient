@@ -8,7 +8,7 @@ public class AccountSummary
 {
 public Int32 groupCount { get; set; }
 public String username { get; set; }
-public Double accountId { get; set; }
+public long accountId { get; set; }
 public object summonerInternalName { get; set; }
 public Int32 dataVersion { get; set; }
 public Boolean admin { get; set; }

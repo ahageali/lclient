@@ -13,6 +13,7 @@ namespace LClient.Supporting
         RtmpSharp.Net.RtmpClient mainClient;
         public String SummonerName {get; set;}
         public event EventHandler<RtmpSharp.Messaging.MessageReceivedEventArgs> MessageRecieved;
+        com.riotgames.platform.login.Session CurrentSession;
 
         #region Main Stuff
         public LRtmp()
@@ -20,6 +21,7 @@ namespace LClient.Supporting
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass && x.Namespace.StartsWith("com")).ToList();
             RtmpSharp.IO.SerializationContext serialContext = new RtmpSharp.IO.SerializationContext(types);
             mainClient = new RtmpSharp.Net.RtmpClient(new Uri("rtmps://prod.na1.lol.riotgames.com:2099"), serialContext,RtmpSharp.IO.ObjectEncoding.Amf3);
+            //mainClient = new RtmpSharp.Net.RtmpClient(new Uri("rtmps://127.0.0.1:2099"), serialContext, RtmpSharp.IO.ObjectEncoding.Amf3);
             mainClient.MessageReceived += RecieveMessage;
         }
 
@@ -48,6 +50,7 @@ namespace LClient.Supporting
             try
             {
                 com.riotgames.platform.login.Session session = await mainClient.InvokeAsync<com.riotgames.platform.login.Session>("my-rtmps","loginService","login", cred);
+                CurrentSession = session;
                 await mainClient.SubscribeAsync("my-rtmps", "messagingDestination", "bc", "bc-" + session.accountSummary.accountId);
                 await mainClient.SubscribeAsync("my-rtmps", "messagingDestination", "gn-" + session.accountSummary.accountId, "gn-" + session.accountSummary.accountId);
                 await mainClient.SubscribeAsync("my-rtmps", "messagingDestination", "cn-" + session.accountSummary.accountId, "cn-" + session.accountSummary.accountId);
@@ -61,6 +64,25 @@ namespace LClient.Supporting
             return false;
         }
 
+        public async Task PerformHeartBeatLoop()
+        {
+            try
+            {
+                int count = 1;
+                while(!mainClient.IsDisconnected)
+                {
+                    object[] dataToSend = {CurrentSession.accountSummary.accountId, CurrentSession.token, count, DateTime.Now.ToString() }; //TODO properly format this for riot
+                    count++;
+                    await mainClient.InvokeAsync<int>("my-rtmps", "loginService", "performLCDSHeartBeat", (object[])dataToSend);
+                    await Task.Delay(120000); //wait 2 mins before executing again
+                }
+            }
+            catch(Exception e)
+            {
+                //TODO: handle exceptions properly
+                System.Windows.MessageBox.Show("heartbeat:" + e.ToString());
+            }
+        }
 
         #endregion
 

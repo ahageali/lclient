@@ -116,7 +116,7 @@ namespace LClient
                 operatingSystem = "Windows 8",
                 username = txtUser.Text,
                 domain = "lolclient.lol.riotgames.com",
-                clientVersion = "4.16.14_09_11_18_16", //todo: don't hardcode this
+                clientVersion = "4.17.14_09_22_18_55", //todo: don't hardcode this
                 locale = "en_US",
                 password = txtPass.Password,
                 macAddress = ""
@@ -137,6 +137,7 @@ namespace LClient
                 com.riotgames.platform.clientfacade.domain.LoginDataPacket data = await rtmpClient.GetLoginDataPacketAsync();
                 MainWindow mainWindow = new MainWindow(data, rtmpClient);
                 mainWindow.Show();
+                rtmpClient.PerformHeartBeatLoop();
                 this.Close();
                 return;
             }
